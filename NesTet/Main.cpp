@@ -50,10 +50,10 @@ int main()
 	//int gh[] = {1,2,1,1,1,2,1,1,1,1}; solveGame(53, T, L, gh, 10);
 
 	//displayGame(10, T, L); //Break at 884A totalFrames = $B1
-	//displayGame(13, Z, I); //Break at 884A totalFrames = $B1
+	displayGame(13, Z, I); //Break at 884A totalFrames = $B1
 	//displayEmpty(0x7F31, 0x1C, L, T);
 	
-	findPieceSolutions();
+	//findPieceSolutions();
 	system("pause");
 	if(gui)
 		delete gui;

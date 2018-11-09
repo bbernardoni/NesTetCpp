@@ -1,5 +1,4 @@
 #include "GUI.h"
-#include "resource.h"
 
 Emu *GUI::emu = NULL;
 HWND GUI::window = NULL;
@@ -8,7 +7,7 @@ HBITMAP GUI::next = NULL;
 
 GUI::GUI(bool mem[10][20], int curPiece, int nextPiece, int rand, int totalFrames)
 {
-	emu = new Emu(mem, curPiece, nextPiece, rand, totalFrames);
+	emu = new Emu(mem, curPiece, nextPiece, rand, totalFrames);/*
 	emu->placePiece(0,8,1);
 	emu->incWaitFrames();
 	emu->incWaitFrames();
@@ -24,7 +23,7 @@ GUI::GUI(bool mem[10][20], int curPiece, int nextPiece, int rand, int totalFrame
 	emu->placePiece(2,5,0);
 	emu->placePiece(7,5,3);
 	emu->placePiece(3,5,1);
-	emu->placePiece(9,7,0);
+	emu->placePiece(9,7,0);*/
     createWindowThread();
 }
     
@@ -119,10 +118,10 @@ LRESULT CALLBACK GUI::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	switch(msg)
 	{
 	case WM_CREATE:
-		tile = LoadBitmap(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_TILE));
+		tile = (HBITMAP) LoadImage(NULL, "img\\tile.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 		if(tile == NULL)
 			MessageBox(hwnd, "Could not load IDB_TILE!", "Error", MB_OK | MB_ICONEXCLAMATION);
-		next = LoadBitmap(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_NEXT));
+		next = (HBITMAP) LoadImage(NULL, "img\\next.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 		if(next == NULL)
 			MessageBox(hwnd, "Could not load IDB_NEXT!", "Error", MB_OK | MB_ICONEXCLAMATION);
 		if(SetTimer(hwnd, 1, 20, NULL) == 0)
